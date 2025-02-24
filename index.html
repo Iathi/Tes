@@ -14,47 +14,31 @@
             color: #333;
         }
 
-        /* Slide */
-        .carousel {
-            position: relative;
-            max-width: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: auto;
-        }
-
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
+        /* Menu de Navegação */
+        nav {
+            background-color: #ff5722;
             padding: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
         }
 
-        .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
-        .prev {
-            left: 10px;
+        nav ul li {
+            margin: 0 15px;
         }
 
-        .next {
-            right: 10px;
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
         }
 
         header {
@@ -245,15 +229,14 @@
     </style>
 </head>
 <body>
-    <!-- Slide no topo -->
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="https://img.restaurantguru.com/rcdb-DK-dminas-Marmitex-e-Restaurante-meat.jpg" alt="Promoção Especial">
-            <img src="https://st5.depositphotos.com/57909824/65990/i/450/depositphotos_659907060-stock-photo-the-authentic-brazilian-lunchbox-better.jpg" alt="Comida Caseira Deliciosa"
-        </div>
-        <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#menu">Cardápio</a></li>
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
 
     <header>
         <h1>Marmitaria Delícia</h1>
@@ -262,38 +245,6 @@
 
     <div class="container">
         <h2>Nosso Cardápio</h2>
-        <div class="products">
-            <div class="product-card">
-                <img src="https://img.restaurantguru.com/w550/h367/rc62-meat-Marmitex-Avenida.jpg" alt="Marmita Tradicional">
-                <h3>Marmita Tradicional</h3>
-                <p>Arroz, feijão, carne e salada fresquinha.</p>
-                <span>R$ 20,00</span>
-                <button onclick="addToCart('Marmita Tradicional', 20)">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product-card">
-                <img src="https://img.restaurantguru.com/w550/h367/rc62-meat-Marmitex-Avenida.jpg" alt="Marmita Fitness">
-                <h3>Marmita Fitness</h3>
-                <p>Peito de frango, legumes no vapor e arroz integral.</p>
-                <span>R$ 25,00</span>
-                <button onclick="addToCart('Marmita Fitness', 25)">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product-card">
-                <img src="https://img.restaurantguru.com/w550/h367/rc62-meat-Marmitex-Avenida.jpg" alt="Marmita Vegetariana">
-                <h3>Marmita Vegetariana</h3>
-                <p>Quinoa, grão-de-bico, legumes assados e tofu.</p>
-                <span>R$ 22,00</span>
-                <button onclick="addToCart('Marmita Vegetariana', 22)">Adicionar ao Carrinho</button>
-            </div>
-            <div class="product-card">
-                <img src="https://img.restaurantguru.com/w550/h367/rc62-meat-Marmitex-Avenida.jpg" alt="Sobremesa">
-                <h3>Sobremesa</h3>
-                <p>Bolo de chocolate ou pudim de leite.</p>
-                <span>R$ 10,00</span>
-                <button onclick="addToCart('Sobremesa', 10)">Adicionar ao Carrinho</button>
-            </div>
-        </div>
-
- 
         <div class="products">
             <div class="product-card">
                 <img src="https://img.restaurantguru.com/w550/h367/rc62-meat-Marmitex-Avenida.jpg" alt="Marmita Tradicional">
@@ -393,15 +344,6 @@
 
             const whatsappLink = `https://wa.me/5551999999999?text=${encodeURIComponent(orderDetails)}`;
             window.open(whatsappLink, '_blank');
-        }
-
-        function moveSlide(direction) {
-            const slides = document.querySelector('.carousel-images');
-            const totalSlides = slides.children.length;
-            const currentTransform = parseInt(getComputedStyle(slides).transform.split(',')[4]);
-            const slideWidth = slides.children[0].clientWidth;
-            const newTransform = (currentTransform + (direction * slideWidth)) % (slideWidth * totalSlides);
-            slides.style.transform = `translateX(${newTransform}px)`;
         }
     </script>
 </body>
